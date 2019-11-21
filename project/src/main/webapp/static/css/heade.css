@@ -1,0 +1,71 @@
+.menu-right ul li {
+    display: inline-block;
+    color: #121213;
+    font-size: 1em;
+    padding-top: 12px;
+
+}
+.menu-right ul li a {
+    color: #101011;
+    padding-left:10px
+}
+
+.menu-right ul li i.glyphicon {
+	font-size: .9em;
+	margin-right: .8em;
+	margin-left:16px
+}
+img.vietnam {
+    height: 24px;
+    width: 27px;
+}
+
+a.navbar-brand.logoshop {
+    color: #ff590f;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+
+
+.header-two.navbar.navbar-default.header-menu {
+    background: #47ccba6e;
+}
+
+	.logo h1 {
+		font-size: 2.8em;
+		margin: 0.6em 0 0.5em;
+		font-weight: 900;
+		float: left;
+	}
+	
+span.tag {
+    display: block;
+    font-size: 13px;
+    color: #0f0e0e;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    /* font-weight: 800; */
+    text-align: center;
+}
+a.shop {
+    font-size: 37px;
+    color: #ff590f;
+    float: left;
+    font-weight: 600;
+}
+b.logotth {
+    color: white;
+    font-size: 35px;
+}
+
+.magin-tophe {
+    margin-top: 19px;
+}
+.icoon-hinh {
+    float: left;
+    /* margin-left: 15px; */
+    margin-right: 15px;
+}
+
