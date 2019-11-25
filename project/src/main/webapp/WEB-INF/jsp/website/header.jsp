@@ -75,7 +75,7 @@
 					<div class=" logo wow zoomIn animated" data-wow-delay=".7s">
 
 						<a href="home" class="shop"> SHOP <b class="logotth">TTH</b> <span
-							class="tag">Ăn và lăn ! </span>
+							class="tag"><spring:message code="header.logo"></spring:message> </span>
 						</a>
 
 					</div>

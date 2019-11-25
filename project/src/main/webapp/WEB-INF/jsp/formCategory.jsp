@@ -30,6 +30,9 @@
 #rightContent {
 
 }
+.error{
+color: red;
+}
 
 #rightContent h3 {
 	font-size: 20px;
@@ -53,22 +56,21 @@
 		<h3>Thêm danh mục mới</h3>
 			<div class="">
 					<div class="main-login main-center">
-						<form:form class="form-horizontal" action="categoryManager/save" modelAttribute="categoryForm" method="post">
+						<form:form class="form-horizontal" action="addCategory" method="post" modelAttribute="categoryForm">
 							<fieldset>
 								<div class="form-group">
-									<label class="col-md-2 control-label" for="confirm_password">Tên nhãn hiệu</label>
+									<label class="col-md-2 control-label" for="confirm_password">Tên danh mục</label>
 									<div class="col-md-5">
 										<form:input type="text" class="form-control name" path="name"/>
-										 <form:errors cssClass="" path="name"/>
+										<form:errors path="name" cssClass="error" />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-md-2 control-label" for="gender">Mô tả</label>
 									<div class="col-md-5">
-									<form:input type="text" class="form-control name" path="description"/>
-										 <form:errors cssClass="" path="description"/>
-										
+										<form:textarea rows="15" class="form-control des" path="description"/> 									
+										<form:errors path="description" cssClass="error" />
 									</div>
 								</div>
 

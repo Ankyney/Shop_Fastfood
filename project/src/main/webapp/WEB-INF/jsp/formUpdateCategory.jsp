@@ -47,7 +47,7 @@
 		<h3>Cập nhật danh mục</h3>
 			<div class="">
 					<div class="main-login main-center">
-						<form class="form-horizontal" action="categoryManager/save" method="post">
+						<form class="form-horizontal" action="saveChangeCategory" method="post">
 							<fieldset>
 								<div class="form-group">
 									<div class="col-md-5">
