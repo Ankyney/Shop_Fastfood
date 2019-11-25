@@ -401,7 +401,7 @@ public class AdminController {
      model.addAttribute("message", "them moi thanh cong");
      brandRepo.save(brand);
    }
-
+		/* Commir */
    return "redirect:/brandManager";
  }
 
