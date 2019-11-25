@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "brand")
@@ -23,8 +26,13 @@ public class Brand implements java.io.Serializable {
   @GeneratedValue(strategy = IDENTITY)
   @Column(name = "id", unique = true, nullable = false)
   private Long id;
-  
+  @NotBlank(message = "Tên thương hiểu không được để trống")
+	@Length(max = 50, message = "Tên sản phẩm không được quá 50 ký tự .")
+	
   private String name;
+  @NotBlank(message = "Mô tả không được để trống")
+	@Length(max = 255, message = "Tên sản phẩm không được quá 50 ký tự .")
+	
   private String description;
   
   public Long getId() {

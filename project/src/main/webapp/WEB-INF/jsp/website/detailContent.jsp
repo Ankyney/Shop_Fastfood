@@ -2,13 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!--breadcrumbs-->
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-				<li class="active">Sản Phẩm</li>
+				<li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><spring:message code="product.home" ></spring:message></a></li>
+				<li class="active"><spring:message code="product.product" ></spring:message></li>
 				<li class="active">${product.name}</li>
 			</ol>
 		</div>

@@ -7,7 +7,7 @@
                 <div class="col-sm-4">
                     <h3>THT.VN</h3>
 
-                    <p><strong style="color:#ff854c"><spring:message code="footer.address"/>: </strong>số 8 ngõ 36 Duy Tân, Cầu Giấy, Hà Nội</p>
+                    <p><strong style="color:#ff854c"><spring:message code="footer.address"/>: </strong>Quan Hoa, Cầu Giấy, Hà Nội</p>
                     <p><strong style="color:#ff854c "><spring:message code="footer.phone"/>: </strong>0386267972 - 0973.273.789 - 024.66.82.86.86 </p>
          
                     <p><strong style="color: #ff854c">Email: </strong>shoptthpoly@gmail.com</p>

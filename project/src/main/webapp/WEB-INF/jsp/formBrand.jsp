@@ -30,7 +30,9 @@
 #rightContent {
 
 }
-
+.error{
+color: red;
+}
 #rightContent h3 {
 	font-size: 20px;
 	font-weight: normal;
@@ -53,19 +55,21 @@
 		<h3>Thêm Thương hiệu mới</h3>
 			<div class="">
 					<div class="main-login main-center">
-						<form class="form-horizontal" action="brandManager/save" method="post">
+						<form:form class="form-horizontal" action="addBrand" method="post"  modelAttribute="brandForm">
 							<fieldset>
 								<div class="form-group">
 									<label class="col-md-2 control-label" for="confirm_password">Tên Thương hiệu</label>
 									<div class="col-md-5">
-										<input type="text" class="form-control name" name="name">
+										<form:input type="text" class="form-control name" path="name"/>
+										<form:errors path="name" cssClass="error" />
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-md-2 control-label" for="description">Mô tả</label>
 									<div class="col-md-5">
-										<textarea rows="15" class="form-control des" name="description"> </textarea>
+										<form:textarea rows="15" class="form-control des" path="description"/> 									
+										<form:errors path="description" cssClass="error" />
 									</div>
 								</div>
 
@@ -78,7 +82,7 @@
 									</div>
 								</div>
 							</fieldset>
-						</form>
+						</form:form>
 					</div>
 				</div>
 		</div>

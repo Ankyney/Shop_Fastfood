@@ -47,7 +47,7 @@
 		<h3>Cập nhật Thương hiệu</h3>
 			<div class="">
 					<div class="main-login main-center">
-						<form class="form-horizontal" action="brandManager/save" method="post">
+						<form class="form-horizontal" action="saveChangeBrand" method="post">
 							<fieldset>
 								<div class="form-group">
 									<div class="col-md-5">
