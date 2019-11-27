@@ -82,7 +82,7 @@ li.treeview.revenue.hai {
         
         <li class="treeview revenue">
           <a href="form-users">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-users"></i>
             <span>Quản lý tài khoản khách hàng</span>
           </a>
         </li>
