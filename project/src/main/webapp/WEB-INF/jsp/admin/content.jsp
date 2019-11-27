@@ -76,7 +76,7 @@
           <div class="small-box bg-yellow">
             <div class="inner">
             
-              <h3><fmt:formatNumber value="${revenue}" type="currency" currencySymbol="$" /></h3>
+              <h3>100$</h3>
 
               <p>Doanh thu năm 2019</p>
             </div>
@@ -120,7 +120,7 @@
 	  	
       
   <footer style="border-top: 1px solid #d2d6de; text-align: center; background: #fff; color: #444; height: 60px; line-height: 60px;position: absolute;bottom: 0px; width: 100%">
-    <strong>Copyright &copy; 2018 | <a href="#">Vi Văn Tiến</a>.</strong>
+    <strong>Copyright &copy; 2019 | <a href="#">Vi Văn Tiến</a>.</strong>
   </footer>
   
 </div>

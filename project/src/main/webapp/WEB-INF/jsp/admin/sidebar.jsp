@@ -73,18 +73,17 @@ li.treeview.revenue.hai {
           </a>
         </li>
         
-        <li class="treeview revenue">
-          <a href="revenue">
-            <i class="fa fa-bar-chart"></i>
-            <span>Quản lý Thống Kê</span>
-            
-          </a>
-        </li>
-        
         <li class="treeview revenue hai">
           <a href="adm-profile">
             <i class="fa fa-user"></i>
             <span>Sửa thông tin tài khoản</span>
+          </a>
+        </li>
+        
+        <li class="treeview revenue">
+          <a href="form-users">
+            <i class="fa fa-user"></i>
+            <span>Quản lý tài khoản khách hàng</span>
           </a>
         </li>
         
