@@ -15,7 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -35,9 +38,12 @@ public class Product implements java.io.Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "cate_id", nullable = false, insertable = true)
 	private Category category;
-	
+	@NotBlank(message = "Tên sản phẩm không được để trống")
+	@Length(max = 50, message = "Tên sản phẩm không được quá 50 ký tự .")
 	private String name;
+	@Min(value = 1, message = "Giá không được nhỏ hơn 1 .")
 	private long price;
+	@Min(value = 1, message = "Số lượng không được nhỏ hơn 1 .")
 	private int quantity;
 	private String image;
 	private int views;
@@ -54,7 +60,8 @@ public class Product implements java.io.Serializable {
   public void setBrand(Brand brand) {
     this.brand = brand;
   }
-
+  @NotBlank(message = "Ngày nhập không được để trống")
+ 
   private String date;
 	
 	public String getDate() {
@@ -78,6 +85,7 @@ public class Product implements java.io.Serializable {
   }
 
   @Column(columnDefinition = "TEXT")
+  @NotBlank(message = "Mô tả không được để trống")
 	private String description;
 	
 	@Transient

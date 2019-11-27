@@ -38,7 +38,7 @@
 					<c:if test="${not empty user}">
 						<a title="Thông tin người dùng" href="/profile"> ${user.name}</a>
 						<button class="btn btn-danger" type="button" onclick="logout()">
-							Đăng xuất</button>
+							<spring:message code="header.logout"></spring:message></button>
 
 					</c:if>
 
@@ -75,7 +75,7 @@
 					<div class=" logo wow zoomIn animated" data-wow-delay=".7s">
 
 						<a href="home" class="shop"> SHOP <b class="logotth">TTH</b> <span
-							class="tag">Ăn và lăn ! </span>
+							class="tag"><spring:message code="header.logo"></spring:message> </span>
 						</a>
 
 					</div>

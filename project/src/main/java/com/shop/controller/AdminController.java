@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,32 +109,20 @@ public class AdminController {
 		return "formCategory";
 	}
 
-	@RequestMapping(value = "/categoryManager/save", method = RequestMethod.POST)
-	public String saveCategory(ModelMap model, @ModelAttribute("categoryForm") Category category, BindingResult result,
-			HttpSession httpSession) {
-//    if (category.getName().trim().length() == 0) {
-//      validateForm.rejectValue("name", "category", "vui long nhap ten");
-//    }
-//    if (validateForm.hasErrors()) {
-//      model.addAttribute("message", "vui long sua loi");
-		String uname = category.getDescription();
-		String upass = category.getName();
-		if (StringUtils.isEmpty(uname)) {// check truong hop
-			result.rejectValue("description", "categoryForm.description");
-		}
-		if (StringUtils.isEmpty(upass)) {
-			result.rejectValue("name", "categoryForm", "categoryForm.name");
-
-		}
-		if (result.hasErrors()) {
-			return "formCategory";
-		} else {
-			model.addAttribute("message", "them moi thanh cong");
-			categoryService.save(category);
-		}
-
-		return "redirect:/categoryManager";
-	}
+	  @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
+	  public String saveCategory(ModelMap model,@Valid @ModelAttribute("categoryForm") Category category,
+	                             BindingResult validateForm) {
+		  
+		
+				if (validateForm.hasErrors()) {
+					return "formCategory";
+				}
+				else {
+				      model.addAttribute("message", "them moi thanh cong");
+				      categoryService.save(category);
+				    }
+	    return "redirect:/categoryManager";
+	  }
 
 //	@GetMapping("/category/edit")
 //	public String editCategory(@PathVariable int id, ModelMap model) {
@@ -159,7 +148,7 @@ public class AdminController {
 			model.addAttribute("message", "vui long sua loi");
 
 		} else {
-			model.addAttribute("message", "them moi thanh cong");
+			model.addAttribute("message", "Cap nhat thanh cong");
 			categoryService.save(category);
 		}
 
@@ -199,7 +188,7 @@ public class AdminController {
 		if (validateForm.hasErrors()) {
 			model.addAttribute("message", "vui long sua loi");
 		} else {
-			model.addAttribute("message", "them moi thanh cong");
+			model.addAttribute("message", "cap nhat thanh cong");
 
 			if (product.getFile_image().isEmpty()) {
 				Product tmp = productService.findOne(product.getId());
@@ -247,47 +236,37 @@ public class AdminController {
 		return "formProduct";
 	}
 
-	@RequestMapping(value = "/productManager/save", method = RequestMethod.POST)
-	public String saveProduct(ModelMap model, @ModelAttribute("productForm") Product product,
-			BindingResult validateForm, HttpServletRequest request) {
+	  @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+	  public String saveProduct(ModelMap model,@Valid @ModelAttribute("productForm") Product product,
+	                            BindingResult validateForm, HttpServletRequest request) {
+	    
+	    System.out.println(product.toString());
+	    
+	    
+			if (validateForm.hasErrors()) {
+				model.addAttribute("Categories", categoryService.findAll());
+			    
+			    model.addAttribute("brands", brandRepo.findAll());
+				return "formProduct";
+			}else {
+	      model.addAttribute("message", "them moi thanh cong");
+	      try {
+	        ServletContext servletContext = request.getServletContext();
+	        String contextPath = servletContext.getRealPath("/");
+	        product.getFile_image().transferTo(new File(
+	            contextPath + "/static/images/prod/" + product.getFile_image().getOriginalFilename()));
+	      } catch (IllegalStateException e) {
+	        e.printStackTrace();
+	      } catch (IOException e) {
+	        e.printStackTrace();
+	      }
 
-		System.out.println(product.toString());
+	      product.setImage("static/images/prod/" + product.getFile_image().getOriginalFilename());
+	      productService.save(product);
+	    }
 
-		if (product.getName().trim().length() == 0) {
-			validateForm.rejectValue("name", "product", "vui long nhap ten");
-		}
-		if (product.getPrice() < 0) {
-			validateForm.rejectValue("price", "product", "gia khong nho hon 0");
-		}
-		if (product.getQuantity() < 0) {
-			validateForm.rejectValue("quantity", "product", "so luong khong nho hon 0");
-		}
-		/*
-		 * if (product.getBrand() == null) { validateForm.rejectValue("brand",
-		 * "product", "san pham phai thuoc nhan hieu nao do"); }
-		 */
-		if (validateForm.hasErrors()) {
-			model.addAttribute("message", "vui long sua loi");
-
-		} else {
-			model.addAttribute("message", "them moi thanh cong");
-			try {
-				ServletContext servletContext = request.getServletContext();
-				String contextPath = servletContext.getRealPath("/");
-				product.getFile_image().transferTo(
-						new File(contextPath + "/static/images/prod/" + product.getFile_image().getOriginalFilename()));
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			product.setImage("static/images/prod/" + product.getFile_image().getOriginalFilename());
-			productService.save(product);
-		}
-
-		return "redirect:/productManager";
-	}
+	    return "redirect:/productManager";
+	  }
 	// closeProduct
 
 	// Start Order
@@ -414,21 +393,19 @@ public class AdminController {
 		return "formBrand";
 	}
 
-	@RequestMapping(value = "/brandManager/save", method = RequestMethod.POST)
-	public String saveBrand(ModelMap model, @ModelAttribute("brandForm") Brand brand, BindingResult validateForm) {
-		if (brand.getName().trim().length() == 0) {
-			validateForm.rejectValue("name", "category", "vui long nhap ten");
-		}
-		if (validateForm.hasErrors()) {
-			model.addAttribute("message", "vui long sua loi");
+	 @RequestMapping(value = "/addBrand", method = RequestMethod.POST)
+	 public String saveBrand(ModelMap model, @Valid @ModelAttribute("brandForm") Brand brand,
+	                            BindingResult validateForm) {
+		
+				if (validateForm.hasErrors()) {
+					return "formBrand";
+				} else {
+	     model.addAttribute("message", "them moi thanh cong");
+	     brandRepo.save(brand);
+	   }
 
-		} else {
-			model.addAttribute("message", "them moi thanh cong");
-			brandRepo.save(brand);
-		}
-
-		return "redirect:/brandManager";
-	}
+	   return "redirect:/brandManager";
+	 }
 
 	@GetMapping("/editBrand")
 	public ModelAndView updateBrand(@RequestParam("id") long id) {
@@ -510,7 +487,7 @@ public class AdminController {
 			model.addAttribute("message", "vui long sua loi");
 
 		} else {
-			model.addAttribute("message", "them moi thanh cong");
+			model.addAttribute("message", "Cap nhat thanh cong");
 			brandRepo.save(brand);
 		}
 

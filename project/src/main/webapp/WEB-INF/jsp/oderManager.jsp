@@ -443,7 +443,7 @@
 			</div>
 		</aside>
 		<footer style="border-top: 1px solid #d2d6de; text-align: center; background: #fff; color: #444; height: 60px; line-height: 60px;">
-			<strong>Copyright &copy; 2017 | <a href="#">Vi Văn Tiến</a>
+			<strong>Copyright &copy; 2017 | <a href="#">SHOP TTH</a>
 			</strong>
 		</footer>
 		</div>

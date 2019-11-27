@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <script>
 function getQtt() {
 	var qtt = Number.parseInt($('.item_quantity' ).val());
@@ -15,10 +15,12 @@ function getQtt() {
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li>
 				<a href="/home">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<spring:message code="product.home" ></spring:message>
+					
 				</a>
 			</li>
-			<li class="active">Sản Phẩm</li>
+			<li class="active"><spring:message code="product.product"></spring:message></li>
 		</ol>
 	</div>
 </div>
@@ -38,7 +40,7 @@ function getQtt() {
 						<a href="single.html"><img src="${product.image}" class="img-responsive"/></a>
 						<div class="new-text">
 							<ul>
-								<li><a href="productDetail?cateID=${product.category.id}&productID=${product.id}">Xem Chi Tiết </a></li>
+								<li><a href="productDetail?cateID=${product.category.id}&productID=${product.id}"><spring:message code="product.xem"></spring:message> </a></li>
 								<li><input type="number" class="item_quantity" min="1" value="1"></li>
 								<li>
 									<form action="#" method="post">
@@ -55,7 +57,7 @@ function getQtt() {
 											<input type="hidden" name="return" value=" " />
 											<input type="hidden" name="cancel_return" value=" " />
 											<!-- <input class="item_quantity" type="submit" name="submit" value="Thêm vào giỏ" /> -->
-											<input type="button" onclick="addItem(${product.id}, getQtt())" class="item_quantity" value="Thêm Vào Giỏ" />
+											<input type="button" onclick="addItem(${product.id}, getQtt())" class="item_quantity" value="<spring:message code="product.them"></spring:message>" />
 										</fieldset>
 									</form>
 									<%-- <button onclick="addItem(${product.id}, getQtt())" class="btn btn-warning">Thêm Vào Giỏ</button> --%>
@@ -87,7 +89,7 @@ function getQtt() {
 				<div class="rsidebar-top">
 					<form action="searchProduct" method="get">
 					<div class="slider-left">
-						<h4>Lọc sản phẩm theo giá</h4>
+						<h4><spring:message code="product.loc"></spring:message></h4>
 						<div id="slider-range"></div><br>
 						<input type="text" id="amount" style="border: 0; color: #353F49; text-align: center; padding-left: 10px;" />
 						<input type="hidden" id="amountHidden" name="priceRange" />
@@ -123,7 +125,7 @@ function getQtt() {
 						<!---->
 					</div>
 					<div class="sidebar-row">
-						<h4>Loại sản phẩm</h4>
+						<h4><spring:message code="product.loai"></spring:message></h4>
 						<div class="row row1 scroll-pane">
 							<!-- <c:choose>
 								<c:when test="${categoryID == null}">
@@ -143,7 +145,7 @@ function getQtt() {
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-							<center><input style="margin: 0 auto; background: #ff5a10; border: none; color: #FFF; width: 150px; height: 40px; border-radius: 10px;" type="submit" value="LỌC THEO GIÁ" /></center>
+							<center><input style="margin: 0 auto; background: #ff5a10; border: none; color: #FFF; width: 150px; height: 40px; border-radius: 10px;" type="submit" value="<spring:message code="product.loc2"></spring:message>" /></center>
 						</div>
 					</div>
 					</form>

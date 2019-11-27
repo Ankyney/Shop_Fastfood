@@ -2,13 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!--breadcrumbs-->
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-				<li class="active">Sản Phẩm</li>
+				<li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><spring:message code="product.home" ></spring:message></a></li>
+				<li class="active"><spring:message code="product.product" ></spring:message></li>
 				<li class="active">${product.name}</li>
 			</ol>
 		</div>
@@ -39,20 +39,20 @@
 					</div>
 					<div class="quantity">
 						<c:if test="${product.quantity > 1}">
-							<p style="font-weight: bold;">Hiện tại vẫn còn hàng</p><br>
-							<p class="qty"> Số lượng :  </p>	
+							<p style="font-weight: bold;"><spring:message code="product.con"></spring:message></p><br>
+							<p class="qty"><spring:message code="product.sl"></spring:message>  </p>	
 							<input style="border: 1px solid #000; color: #000; font-weight: 700;" min="1" type="number" value="1" class="item_quantity">
 						</c:if>
 						
 						<c:if test="${product.quantity < 1}">
-							<p style="font-weight: bold;">Hiện tại đã hết hàng</p><br>
+							<p style="font-weight: bold;"><spring:message code="product.het"></spring:message></p><br>
 						</c:if>
 						
 					</div>
 					
 					<c:if test="${product.quantity > 1}">
 							<div class="btn_form">
-								<button onclick="addItem(${product.id}, getQtt())" class="btn btn-warning">Thêm Vào Giỏ</button>
+								<button onclick="addItem(${product.id}, getQtt())" class="btn btn-warning"><spring:message code="product.them"></spring:message></button>
 							</div>
 					</c:if>
 						

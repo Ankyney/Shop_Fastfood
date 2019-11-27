@@ -118,7 +118,7 @@
 
 			<footer 
 				style="border-top: 1px solid #d2d6de; text-align: center; background: #fff; color: #444; height: 60px; line-height: 60px;position: absolute;bottom: 0px; width: 100%">
-				<strong>Copyright &copy; 2018 | <a href="#">Vi Văn Tiến</a>.
+				<strong>Copyright &copy; 2018 | <a href="#">SHOP TTH</a>.
 				</strong>
 			</footer>
 		</div>

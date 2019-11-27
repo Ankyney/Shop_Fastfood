@@ -9,56 +9,11 @@ function getQtt(idx) {
 	return qtt
 }
 </script>
-<!-- 
-<div class="new">
-	<div class="container">
-		<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-			<h3 class="title">BÁN CHẠY</h3>
-			<p>TOP 4 SẢN PHẨM BÁN CHẠY NHẤT</p>
-		</div>
-		<div class="new-info">
-		
-		<c:forEach var="i" items="${bestSeller}" varStatus="loop">
-			<div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
-				<div class="new-top">
-					<a href="single.html"><img src="${i.image}"
-						class="img-responsive" alt="" /></a>
-					<div class="new-text">
-						<ul>
-							<li><a class="item_add" href="productDetail?cateID=${i.category.id}&productID=${i.id}">Xem Chi Tiết </a></li>
-							<li><input type="number" class="item_quantity _${loop.index}" min="1" value="1"></li>
-							<li><a onclick="addItem(${i.id}, getQtt(${loop.index}))" style="cursor: pointer">Thêm vào Giỏ </a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="new-bottom">
-					<h5>
-						<a class="name" href="single.html">${i.name}</a>
-					</h5>
-					<div class="rating">
-						<span class="on">☆</span> <span class="on">☆</span> <span class="on">☆</span>
-						<span class="on">☆</span> <span class="on">☆</span>
-					</div>
-					<div class="ofr">
-						<p>
-							<span class="item_price"><fmt:formatNumber value="${i.price}" type="currency" currencySymbol="$"/></span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-</div>
- -->
-<!--//new-->
-<!--gallery-->
 <div class="gallery">
 	<div class="container">
 		<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-			<h3 class="title">SẢN PHẨM</h3>
-			<p>Sản phẩm cửa Shop TTH </p>
+			<h3 class="title"><spring:message code="product.product2"></spring:message></h3>
+			<p><spring:message code="product.of"></spring:message> </p>
 		</div>
 		<div class="gallery-info">
 			<c:forEach var="product" varStatus="status" items="${mostViews}">
