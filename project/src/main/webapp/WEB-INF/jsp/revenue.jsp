@@ -76,7 +76,7 @@
 		function draw() {
 			var cb = function(datas) {
 
-				var ctx = document.getElementById("chart").getContext('2d');
+				var ctx = document.getElementById("chart").getContext('3d');
 				var myChart = new Chart(ctx, {
 					type : 'bar',
 					data : {
