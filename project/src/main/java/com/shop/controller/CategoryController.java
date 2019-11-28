@@ -31,11 +31,6 @@ public class CategoryController {
 		return "load";
 	}
 
-//	@GetMapping("/searchProduct")
-//	public String searchByPriceRange(ModelMap model, @RequestParam("priceRange") String priceRange) {
-//		long[] price = test.getPrice(priceRange);
-//		model.addAttribute("products", productService.SearchByPriceRange(price[0], price[1]));
-//		return "load";
-//	}
+
 
 }
