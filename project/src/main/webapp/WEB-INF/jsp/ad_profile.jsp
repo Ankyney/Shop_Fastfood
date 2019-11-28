@@ -39,7 +39,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					<small>Thông tin Admin </small>
+					<small>Thông tin Admin</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -118,7 +118,7 @@
 
 			<footer 
 				style="border-top: 1px solid #d2d6de; text-align: center; background: #fff; color: #444; height: 60px; line-height: 60px;position: absolute;bottom: 0px; width: 100%">
-				<strong>Copyright &copy; 2018 | <a href="#">SHOP TTH</a>.
+				<strong>Copyright &copy; 2019 | <a href="#">SHOP TTH</a>.
 				</strong>
 			</footer>
 		</div>

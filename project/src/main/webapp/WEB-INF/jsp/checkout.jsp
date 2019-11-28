@@ -10,6 +10,14 @@
 .hover-cart:hover {
 	background-color: #ff590f;
 }
+
+a.sing_in {
+	border: solid 1px aqua;
+	border-radius: 6px;
+	padding: 8px;
+	background-color: aqua;
+	color: black;
+}
 </style>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <body>
@@ -107,13 +115,14 @@
 
 						</c:if>
 						<br>
-						
-						
-							<div class="btn_form">
-								<button onclick="addItem(${product.id}, getQtt())" class="btn btn-warning">Cập nhật giỏ hàng</button>
-							</div>
-					
-					
+
+
+						<div class="btn_form">
+							<button onclick="addItem(${product.id}, getQtt())"
+								class="btn btn-warning">Cập nhật giỏ hàng</button>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
@@ -130,6 +139,9 @@
 							<br>
 							<form class="form-horizontal">
 								<fieldset>
+
+
+
 									<div class="form-group">
 										<label class="col-md-2 control-label" for="name"><b>Tên
 												người dùng</b></label>
@@ -167,20 +179,35 @@
 									<div class="form-group">
 										<div class="col-md-8">
 											<div class="text-center"
-												style="display: flex; justify-content: center; padding: 20px;">
+												style="justify-content: center; padding: 20px;">
 												<div style="display: inline-block; padding: 10px;">
-													<button class="btn btn-info"
-														onclick="createOrder('regular')">Thanh toán đơn
-														hàng</button>
+													<!-- <button class="btn btn-info"
+														onclick="createOrder('regular')" >Thanh toán đơn
+														hàng</button> -->
+
+													<c:choose>
+														<c:when test="${empty user.name}">
+															<a href="/login" class="sing_in">Đăng nhập để mua
+																hàng !</a>
+														</c:when>
+														<c:otherwise>
+															<button class="btn btn-info"
+																onclick="createOrder('regular')">Thanh toán
+																đơn hàng</button>
+														</c:otherwise>
+													</c:choose>
+
 												</div>
 
 												<div style="display: inline-block; padding: 10px;">
-													<a href="/home" class="btn btn-danger"> Tiếp tục mua hàng</a>
+													<a href="/home" class="btn btn-danger"> Tiếp tục mua
+														hàng</a>
 												</div>
 
 											</div>
 										</div>
 									</div>
+
 								</fieldset>
 							</form>
 						</div>
