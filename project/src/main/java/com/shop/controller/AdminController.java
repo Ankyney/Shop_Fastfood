@@ -414,84 +414,68 @@ public class AdminController {
 		return mv;
 	}
 
-//Start
-//Users-------------------------------------------------------------
+	//Start
+	//Users-------------------------------------------------------------
 	@GetMapping("/form-users")
 	public String users(HttpServletRequest request, ModelMap model) {
-		model.addAttribute("users", usersRepo.findAll());
+	model.addAttribute("users", productService.findbyrole());
 
-		User user = (User) request.getSession().getAttribute("user-admin");
-		if (user == null || user.getRole() != ADM)
-			return "admlogin";
+	User user = (User) request.getSession().getAttribute("user-admin");
+	if (user == null || user.getRole() != ADM)
+	  return "admlogin";
 
-		return "formUsers";
+	return "formUsers";
 	}
 
 	@GetMapping("/users/{id}/delete")
 	public String deleteUsers(@PathVariable long id) {
-		usersRepo.deleteById(id);
-		return "redirect:/form-users";
+	usersRepo.deleteById(id);
+	return "redirect:/form-users";
 
 	}
 
 	@RequestMapping(value = "/formUsers/save", method = RequestMethod.POST)
-	public String saveUsers(ModelMap model, Users users, BindingResult validateForm) {
-		if (users.getUsername().trim().length() == 0) {
-			validateForm.rejectValue("username", "users", "vui long nhap ten");
-		}
-		if (users.getName().trim().length() == 0) {
-			validateForm.rejectValue("name", "users", "vui long nhap ten");
-		}
-		if (users.getPassword().trim().length() == 0) {
-			validateForm.rejectValue("password", "users", "vui long nhap mat khau");
-		}
-		if (users.getPhone().trim().length() == 11) {
-			validateForm.rejectValue("phone", "users", "vui long nhap mat khau");
-		}
-		if (users.getPassword().trim().length() == 0) {
-			validateForm.rejectValue("password", "users", "vui long nhap mat khau");
-		}
-		if (users.getAddress().trim().length() == 0) {
-			validateForm.rejectValue("address", "users", "vui long nhap dia  chi");
-		}
-		if (users.getEmail().trim().length() == 0) {
-			validateForm.rejectValue("email", "users", "vui long nhap email");
-		}
+	public String saveUsers(ModelMap model, Users users,
+	                         BindingResult validateForm) {
+	if (users.getUsername().trim().length() == 0) {
+		    validateForm.rejectValue("username","users", "vui long nhap ten");
+		  }
+	if (users.getName().trim().length() == 0) {
+	  validateForm.rejectValue("name","users", "vui long nhap ten");
+	}
+	if (users.getPassword().trim().length() == 0) {
+		    validateForm.rejectValue("password","users","vui long nhap mat khau");
+	}
+	if (users.getPhone().trim().length() == 11) {
+		    validateForm.rejectValue("phone","users","vui long nhap mat khau");
+	}
+	if (users.getPassword().trim().length() == 0) {
+		    validateForm.rejectValue("password","users","vui long nhap mat khau");
+	}
+	if (users.getAddress().trim().length() == 0) {
+		    validateForm.rejectValue("address","users","vui long nhap dia  chi");
+	}
+	if (users.getEmail().trim().length() == 0) {
+		    validateForm.rejectValue("email","users","vui long nhap email");
+	}
 
-		if (validateForm.hasErrors()) {
-			model.addAttribute("message", "vui long sua loi");
+	if (validateForm.hasErrors()) {
+	  model.addAttribute("message", "vui long sua loi");
 
-		} else {
-			model.addAttribute("message", "them moi thanh cong");
-			usersRepo.save(users);
-		}
+	} else {
+	  model.addAttribute("message", "them moi thanh cong");
+	  users.setRole(1);
+	  usersRepo.save(users);
+	}
 
-		return "redirect:/form-users";
+	return "redirect:/form-users";
 	}
 
 	@GetMapping("/editUsers")
 	public ModelAndView updateUsers(@RequestParam("id") long id) {
-		ModelAndView mv = new ModelAndView("formupdateUsers");
-		mv.addObject("users", usersRepo.findById(id).get());
-		return mv;
+	ModelAndView mv = new ModelAndView("formupdateUsers");
+	mv.addObject("users", usersRepo.findById(id).get());
+	return mv;
 	}
-//End Brand
-
-	@PostMapping("/saveChangeBrand")
-	public String saveChangeBrand(ModelMap model, @Validated @ModelAttribute("brandForm") Brand brand,
-			BindingResult validateForm) {
-		if (brand.getName().trim().length() == 0) {
-			validateForm.rejectValue("name", "brand", "vui long nhap ten");
-		}
-		if (validateForm.hasErrors()) {
-			model.addAttribute("message", "vui long sua loi");
-
-		} else {
-			model.addAttribute("message", "Cap nhat thanh cong");
-			brandRepo.save(brand);
-		}
-
-		return "redirect:/brandManager";
-	}
-	// End Brand
+	//End Brand
 }

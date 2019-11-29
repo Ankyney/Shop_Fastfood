@@ -16,7 +16,10 @@ import com.shop.entities.Category;
 import com.shop.entities.Product;
 import com.shop.entities.QOrderDetail;
 import com.shop.entities.QProduct;
+import com.shop.entities.Users;
 import com.shop.repository.ProductRepository;
+import javax.persistence.Query;
+
 
 @Service
 @Transactional
@@ -125,4 +128,18 @@ public class ProductServiceImpl implements ProductService {
   public Long count() {
     return repo.count();
   }
+  @Override
+ 	public List<Users> findbyrole() {
+ 		String sql = "from Users where role = 1";
+ 		Query query =entityManager.createQuery(sql);
+ 		List<Users> list = query.getResultList();
+ 	return list;
+ 	}
+   @Override
+ 	public void update(Users users) {
+ 		// TODO Auto-generated method stub
+ 		entityManager.merge(users);
+ 	}
+
+
 }
