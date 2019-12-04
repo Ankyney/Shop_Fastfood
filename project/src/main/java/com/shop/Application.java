@@ -8,15 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@ComponentScan("com.shop")
 @EnableTransactionManagement
-@EnableJpaRepositories("com.shop.repository")
-@EntityScan("com.shop.entities")
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 
-		/* nhanh chính check */
-		/* nhanh chính check */
+
 	}
 }
