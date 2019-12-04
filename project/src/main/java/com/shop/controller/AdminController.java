@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.entities.Brand;
 import com.shop.entities.Users;
@@ -97,8 +98,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/category/{id}/delete")
-	public String deleteCategory(@PathVariable int id, ModelMap model) {
-		categoryService.delete(id);
+	public String deleteCategory(@PathVariable int id, ModelMap model, final RedirectAttributes redirectAttributes) {
+		boolean result =categoryService.delete(id);
+		String message = result == true ? "Xoa danh muc thanh công!" : "xoa danh muc that bai!";
+		redirectAttributes.addFlashAttribute("msg", message);
 		return "redirect:/categoryManager";
 
 	}
@@ -111,14 +114,15 @@ public class AdminController {
 
 	  @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
 	  public String saveCategory(ModelMap model,@Valid @ModelAttribute("categoryForm") Category category,
-	                             BindingResult validateForm) {
+	                             BindingResult validateForm, final RedirectAttributes redirectAttributes) {
 		  
 		
 				if (validateForm.hasErrors()) {
 					return "formCategory";
 				}
 				else {
-				      model.addAttribute("message", "them moi thanh cong");
+				      
+				      redirectAttributes.addFlashAttribute("msg", "Them moi danh mục thanh cong!");
 				      categoryService.save(category);
 				    }
 	    return "redirect:/categoryManager";
@@ -140,7 +144,7 @@ public class AdminController {
 
 	@PostMapping("/saveChangeCategory")
 	public String saveChangeCategory(ModelMap model, @Validated @ModelAttribute("categoryForm") Category category,
-			BindingResult validateForm) {
+			BindingResult validateForm, final RedirectAttributes redirectAttributes) {
 		if (category.getName().trim().length() == 0) {
 			validateForm.rejectValue("name", "category", "vui long nhap ten");
 		}
@@ -148,7 +152,7 @@ public class AdminController {
 			model.addAttribute("message", "vui long sua loi");
 
 		} else {
-			model.addAttribute("message", "Cap nhat thanh cong");
+			redirectAttributes.addFlashAttribute("msg", "cap nhat danh muc thanh cong!");
 			categoryService.save(category);
 		}
 
@@ -169,7 +173,7 @@ public class AdminController {
 
 	@PostMapping("/saveChangeProduct")
 	public String saveChangeProduct(ModelMap model, @ModelAttribute("productForm") Product product,
-			BindingResult validateForm, HttpServletRequest request) {
+			BindingResult validateForm, HttpServletRequest request, final RedirectAttributes redirectAttributes) {
 
 		System.out.println(product.toString());
 
@@ -188,6 +192,7 @@ public class AdminController {
 		if (validateForm.hasErrors()) {
 			model.addAttribute("message", "vui long sua loi");
 		} else {
+			redirectAttributes.addFlashAttribute("msg", "cap nhat san pham thanh cong!");
 			model.addAttribute("message", "cap nhat thanh cong");
 
 			if (product.getFile_image().isEmpty()) {
@@ -223,8 +228,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/product/{id}/delete")
-	public String deleteProduct(@PathVariable long id, ModelMap model) {
-		productService.delete(id);
+	public String deleteProduct(@PathVariable long id, ModelMap model, final RedirectAttributes redirectAttributes) {
+		boolean result =productService.delete(id);
+		String message = result == true ? "xoa san pham thanh cong!" : "xoa san pham that bai!";
+		redirectAttributes.addFlashAttribute("msg", message);
 		return "redirect:/productManager";
 	}
 
@@ -395,12 +402,13 @@ public class AdminController {
 
 	 @RequestMapping(value = "/addBrand", method = RequestMethod.POST)
 	 public String saveBrand(ModelMap model, @Valid @ModelAttribute("brandForm") Brand brand,
-	                            BindingResult validateForm) {
+	                            BindingResult validateForm, final RedirectAttributes redirectAttributes) {
 		
 				if (validateForm.hasErrors()) {
 					return "formBrand";
 				} else {
-	     model.addAttribute("message", "them moi thanh cong");
+					 redirectAttributes.addFlashAttribute("msg", "Them moi thương hieu thanh cong!");
+	  
 	     brandRepo.save(brand);
 	   }
 
@@ -413,7 +421,23 @@ public class AdminController {
 		mv.addObject("brand", brandRepo.findById(id).get());
 		return mv;
 	}
+	@PostMapping("/saveChangeBrand")
+	 public String saveChangeBrand(ModelMap model, @Validated @ModelAttribute("brandForm") Brand brand, BindingResult validateForm, final RedirectAttributes redirectAttributes) {
+	   if (brand.getName().trim().length() == 0) {
+	     validateForm.rejectValue("name", "brand", "vui long nhap ten");
+	   }
+	   if (validateForm.hasErrors()) {
+	     model.addAttribute("message", "vui long sua loi");
 
+	   } else {
+		   redirectAttributes.addFlashAttribute("msg", "cap nhat thuong hieu thanh cong!");
+	     
+	     brandRepo.save(brand);
+	   }
+
+	   return "redirect:/brandManager";
+	 }
+	 // End Brand
 	//Start
 	//Users-------------------------------------------------------------
 	@GetMapping("/form-users")

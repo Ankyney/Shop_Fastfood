@@ -27,6 +27,9 @@
        folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="static/admin/css/skins/_all-skins.min.css">
  <style type="text/css">
+ .msg {
+	color: green;
+}
   span.glyphicon.glyphicon-trash {
     float: right;
     margin-right: 10px;
@@ -58,6 +61,7 @@ span.glyphicon.glyphicon-pencil {
 					<li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
 					<li><a href="#">Quản lý Sản Phẩm</a></li>
 				</ol>
+				<div class="msg">${msg}</div>
 			</section>
 			
 

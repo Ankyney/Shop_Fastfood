@@ -14,6 +14,6 @@ public interface CategoryService {
 
     void save(Category category);
 
-    void delete(long id);
-	
+    public boolean delete(long id);
+    
 }

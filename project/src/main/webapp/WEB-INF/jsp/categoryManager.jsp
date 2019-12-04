@@ -8,7 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Quản lý Danh mục</title>
 <!-- Tell the browser to be responsive to screen width -->
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
 <!-- Bootstrap 3.3.6 -->
 <link rel="stylesheet" href="static/admin/css/bootstrap.min.css">
 <!-- Font Awesome -->
@@ -18,22 +20,28 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 <!-- DataTables -->
-<link rel="stylesheet" href="static/admin/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet"
+	href="static/admin/datatables/dataTables.bootstrap.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="static/admin/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="static/admin/css/skins/_all-skins.min.css">
 
-     <style type="text/css">
-  span.glyphicon.glyphicon-trash {
-    float: right;
-    margin-right: 6px;
+<style type="text/css">
+.msg {
+	color: green;
 }
+
+span.glyphicon.glyphicon-trash {
+	float: right;
+	margin-right: 6px;
+}
+
 span.glyphicon.glyphicon-pencil {
-    margin-left: 6px;
+	margin-left: 6px;
 }
-  </style>
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -46,8 +54,7 @@ span.glyphicon.glyphicon-pencil {
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Quản lý Danh mục
-					<small>
+					Quản lý Danh mục <small>
 						<form action="addCategory">
 							<input type="submit" value="Thêm Danh Mục" />
 						</form>
@@ -57,12 +64,13 @@ span.glyphicon.glyphicon-pencil {
 					<li><a href="#"><i class="fa fa-dashboard"></i> Quản trị</a></li>
 					<li><a href="#">Quản lý Danh mục</a></li>
 				</ol>
+				<div class="msg">${msg}</div>
 			</section>
-			
+
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="row">					
+				<div class="row">
 					<div class="col-xs-12">
 						<!-- Start Table -->
 						<div class="box">
@@ -72,29 +80,29 @@ span.glyphicon.glyphicon-pencil {
 									<thead>
 										<tr>
 											<th width="150px">Mã Danh Mục</th>
-											<th width="700px">Tên Danh Mục</th>											
+											<th width="700px">Tên Danh Mục</th>
 											<th width="15px">Lựa Chọn</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach var="category" items="${categories}">
-										<tr>
-											<td>${category.id}</td>
-											<td>${category.name}</td>
-											<td>
-											<a href="editCategory?cateID=${category.id}"><span class="glyphicon glyphicon-pencil"></span></a>
-											&nbsp;
-											<a href="category/${category.id}/delete" onclick="return confirm('Bạn chắc chắn muốn xóa ?')"><span class="glyphicon glyphicon-trash"></span></a>
-											</td>
-											
-											
-										</tr>
+											<tr>
+												<td>${category.id}</td>
+												<td>${category.name}</td>
+												<td><a href="editCategory?cateID=${category.id}"><span
+														class="glyphicon glyphicon-pencil"></span></a> &nbsp; <a
+													href="category/${category.id}/delete"
+													onclick="return confirm('Bạn chắc chắn muốn xóa ?')"><span
+														class="glyphicon glyphicon-trash"></span></a></td>
+
+
+											</tr>
 										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
 											<th width="150px">Mã Danh Mục</th>
-											<th>Tên Danh Mục</th>											
+											<th>Tên Danh Mục</th>
 											<th>Lựa Chọn</th>
 										</tr>
 									</tfoot>
@@ -148,7 +156,8 @@ span.glyphicon.glyphicon-pencil {
 								class="menu-icon fa fa-user bg-yellow"></i>
 
 								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+									<h4 class="control-sidebar-subheading">Frodo Updated His
+										Profile</h4>
 
 									<p>New phone +1(800)555-1234</p>
 								</div>
@@ -157,7 +166,8 @@ span.glyphicon.glyphicon-pencil {
 								class="menu-icon fa fa-envelope-o bg-light-blue"></i>
 
 								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+									<h4 class="control-sidebar-subheading">Nora Joined Mailing
+										List</h4>
 
 									<p>nora@example.com</p>
 								</div>
@@ -166,7 +176,8 @@ span.glyphicon.glyphicon-pencil {
 								class="menu-icon fa fa-file-code-o bg-green"></i>
 
 								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+									<h4 class="control-sidebar-subheading">Cron Job 254
+										Executed</h4>
 
 									<p>Execution time 5 seconds</p>
 								</div>
@@ -178,11 +189,13 @@ span.glyphicon.glyphicon-pencil {
 					<ul class="control-sidebar-menu">
 						<li><a href="javascript:void(0)">
 								<h4 class="control-sidebar-subheading">
-									Custom Template Design <span class="label label-danger pull-right">70%</span>
+									Custom Template Design <span
+										class="label label-danger pull-right">70%</span>
 								</h4>
 
 								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+									<div class="progress-bar progress-bar-danger"
+										style="width: 70%"></div>
 								</div>
 						</a></li>
 						<li><a href="javascript:void(0)">
@@ -191,16 +204,19 @@ span.glyphicon.glyphicon-pencil {
 								</h4>
 
 								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-success" style="width: 95%"></div>
+									<div class="progress-bar progress-bar-success"
+										style="width: 95%"></div>
 								</div>
 						</a></li>
 						<li><a href="javascript:void(0)">
 								<h4 class="control-sidebar-subheading">
-									Laravel Integration <span class="label label-warning pull-right">50%</span>
+									Laravel Integration <span
+										class="label label-warning pull-right">50%</span>
 								</h4>
 
 								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+									<div class="progress-bar progress-bar-warning"
+										style="width: 50%"></div>
 								</div>
 						</a></li>
 						<li><a href="javascript:void(0)">
@@ -209,7 +225,8 @@ span.glyphicon.glyphicon-pencil {
 								</h4>
 
 								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+									<div class="progress-bar progress-bar-primary"
+										style="width: 68%"></div>
 								</div>
 						</a></li>
 					</ul>
@@ -218,7 +235,8 @@ span.glyphicon.glyphicon-pencil {
 				</div>
 				<!-- /.tab-pane -->
 				<!-- Stats tab content -->
-				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
+					Content</div>
 				<!-- /.tab-pane -->
 				<!-- Settings tab content -->
 				<div class="tab-pane" id="control-sidebar-settings-tab">
@@ -226,8 +244,8 @@ span.glyphicon.glyphicon-pencil {
 						<h3 class="control-sidebar-heading">General Settings</h3>
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Report panel usage <input
-								type="checkbox" class="pull-right" checked>
+							<label class="control-sidebar-subheading"> Report panel
+								usage <input type="checkbox" class="pull-right" checked>
 							</label>
 
 							<p>Some information about this general settings option</p>
@@ -235,8 +253,8 @@ span.glyphicon.glyphicon-pencil {
 						<!-- /.form-group -->
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Allow mail redirect <input
-								type="checkbox" class="pull-right" checked>
+							<label class="control-sidebar-subheading"> Allow mail
+								redirect <input type="checkbox" class="pull-right" checked>
 							</label>
 
 							<p>Other sets of options are available</p>
@@ -244,8 +262,8 @@ span.glyphicon.glyphicon-pencil {
 						<!-- /.form-group -->
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Expose author name in
-								posts <input type="checkbox" class="pull-right" checked>
+							<label class="control-sidebar-subheading"> Expose author
+								name in posts <input type="checkbox" class="pull-right" checked>
 							</label>
 
 							<p>Allow the user to show his name in blog posts</p>
@@ -255,22 +273,22 @@ span.glyphicon.glyphicon-pencil {
 						<h3 class="control-sidebar-heading">Chat Settings</h3>
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Show me as online <input
-								type="checkbox" class="pull-right" checked>
+							<label class="control-sidebar-subheading"> Show me as
+								online <input type="checkbox" class="pull-right" checked>
 							</label>
 						</div>
 						<!-- /.form-group -->
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Turn off notifications
-								<input type="checkbox" class="pull-right">
+							<label class="control-sidebar-subheading"> Turn off
+								notifications <input type="checkbox" class="pull-right">
 							</label>
 						</div>
 						<!-- /.form-group -->
 
 						<div class="form-group">
-							<label class="control-sidebar-subheading"> Delete chat history <a
-								href="javascript:void(0)" class="text-red pull-right"><i
+							<label class="control-sidebar-subheading"> Delete chat
+								history <a href="javascript:void(0)" class="text-red pull-right"><i
 									class="fa fa-trash-o"></i></a>
 							</label>
 						</div>

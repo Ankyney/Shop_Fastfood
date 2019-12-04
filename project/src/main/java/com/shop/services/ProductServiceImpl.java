@@ -56,9 +56,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public boolean delete(Long id) {
 		// TODO Auto-generated method stub
 	  repo.deleteById(id);
+	  return true;
 	}
 
 	@Override

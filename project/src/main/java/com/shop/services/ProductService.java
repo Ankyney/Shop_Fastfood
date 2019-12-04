@@ -31,7 +31,7 @@ public interface ProductService {
 	
 	void update(Product product);
 
-	void delete(Long id);
+	public boolean delete(Long id);
 	
 	void update(Users users);
 	
